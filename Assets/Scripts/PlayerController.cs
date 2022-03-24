@@ -7,11 +7,10 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
 
     [SerializeField] private float defaultSpeed = 0.1f;
-    [SerializeField] private float fallSpeed = 1;
+    [SerializeField] private float fallSpeed = .5f;
     private float speed;
     private float horizontalInput;
     private float verticalInput;
-    private float jumpInput;
     private bool crouch = false;
     private bool sprint = false;
 
@@ -25,12 +24,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Get the movement inputs
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-        jumpInput = Input.GetAxisRaw("Jump");
-    }
 
-    void FixedUpdate() {
         Vector3 move;
 
         if (!controller.isGrounded)
