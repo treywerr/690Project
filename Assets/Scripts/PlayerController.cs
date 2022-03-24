@@ -6,13 +6,16 @@ public class PlayerController : MonoBehaviour
 {
     private CharacterController controller;
 
-    [SerializeField] private float defaultSpeed = 5f;
-    [SerializeField] private float fallSpeed = 1f;
+    public float defaultSpeed = 5f;
+    public float gravity = 9.8f;
+
     private float speed;
     private float horizontalInput;
     private float verticalInput;
     private bool crouch = false;
     private bool sprint = false;
+
+    private Vector3 velocity;
 
     // Start is called before the first frame update
     void Start()
@@ -27,26 +30,38 @@ public class PlayerController : MonoBehaviour
         /* Get the movement inputs */
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+        crouch = Input.GetKey("left ctrl");
+        sprint = Input.GetKey("left shift");
 
         /* Construct movement vector */
-        Vector3 move;
 
         if (!controller.isGrounded)
-            move = Vector3.down * fallSpeed;
+            velocity.y -= gravity * Time.deltaTime;
         else
-            move = Vector3.zero;
+        {
+            velocity = Vector3.zero;
+            velocity.y = -2f; // make the player stick to the ground better
+        }
 
-        if (sprint)
-            speed *= 1.5f;
-        else if (crouch)
-            speed *= 0.5f;
+        if (crouch)
+        {
+            speed = defaultSpeed * 0.5f;
+            transform.localScale = new Vector3(1, 0.5f, 1); // shorten the player
+        }
         else
-            speed = defaultSpeed;
+        {
+            transform.localScale = new Vector3(1, 1, 1); // make player normal height when not crouching
+
+            if (sprint)
+                speed = defaultSpeed * 1.5f;
+            else
+                speed = defaultSpeed;
+        }
 
         if (horizontalInput != 0 || verticalInput != 0)
-            move += (transform.right * horizontalInput + transform.forward * verticalInput) * speed * Time.deltaTime;
+            velocity = (transform.right * horizontalInput + transform.forward * verticalInput) * speed;
 
         /* Execute movement */
-        controller.Move(move);
+        controller.Move(velocity * Time.deltaTime);
     }
 }
