@@ -109,7 +109,6 @@ GameObject:
   - component: {fileID: 3262146898928395334}
   - component: {fileID: 432274845903769912}
   - component: {fileID: 2118702754616382928}
-  - component: {fileID: 7599783139509645575}
   - component: {fileID: 771071590758554718}
   - component: {fileID: 754318572}
   m_Layer: 0
@@ -183,20 +182,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7599783139509645575
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8253853313360044488}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &771071590758554718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bb99f493aba02540895b397cb2d97ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultSpeed: 0.1
+  defaultSpeed: 5
   fallSpeed: 1
 --- !u!143 &754318572
 CharacterController:
