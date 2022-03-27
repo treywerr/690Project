@@ -20,8 +20,8 @@ public class FlashlightController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Flashlight lit
         if (lite.enabled) {
+            /* Flashlight lit */
             // OPERATION SOUND EMITTED
             // Kill enemies, or have enemies be killed (kill them here or in a script on the enemies?)
             litTime -= Time.deltaTime;
@@ -31,9 +31,9 @@ public class FlashlightController : MonoBehaviour
                 litTime = litTimeMax;
             }
         }
-
-        if (Input.GetKey(KeyCode.F))
+        else if (InputWrapper.GetKey(KeyCode.F))
         {
+            /* Flashlight charging */
             // WIND UP SOUND EMITTED
             chargeTime -= Time.deltaTime;
             if (chargeTime <= 0) {

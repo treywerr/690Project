@@ -50,6 +50,20 @@ public class InputWrapper
     /// <summary>
     /// Gets the input as modified by the current control state.
     /// </summary>
+    /// <param name="key">The key code of the desired keyboard key.</param>
+    /// <returns>Returns true while the user holds the key identified by key, as long as the game is in a play state.</returns>
+    public static bool GetKey(KeyCode key)
+    {
+        if (currentState == InputStates.Gameplay)
+        {
+            return Input.GetKey(key);
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Gets the input as modified by the current control state.
+    /// </summary>
     /// <param name="axisName">The name of the axis for the desired input.</param>
     /// <returns>Float depicting value of the given input axis.</returns>
     public static float GetMovement(string axisName)

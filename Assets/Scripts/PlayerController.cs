@@ -28,10 +28,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         /* Get the movement inputs */
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-        crouch = Input.GetKey("left ctrl");
-        sprint = Input.GetKey("left shift");
+        horizontalInput = InputWrapper.GetMovement("Horizontal");
+        verticalInput = InputWrapper.GetMovement("Vertical");
+        crouch = InputWrapper.GetKey(KeyCode.LeftControl);
+        sprint = InputWrapper.GetKey(KeyCode.LeftShift);
 
         /* Construct movement vector */
 
