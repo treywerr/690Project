@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         horizontalInput = InputWrapper.GetMovement("Horizontal");
         verticalInput = InputWrapper.GetMovement("Vertical");
         crouch = InputWrapper.GetAxis("Crouch", InputWrapper.InputStates.Gameplay) == 1f;
-        sprint = InputWrapper.GetAxis("Shift", InputWrapper.InputStates.Gameplay) == 1f;
+        sprint = InputWrapper.GetAxis("Sprint", InputWrapper.InputStates.Gameplay) == 1f;
 
         /* Construct movement vector */
 
