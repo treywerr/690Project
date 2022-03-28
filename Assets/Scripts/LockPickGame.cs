@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LockPickGame : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class LockPickGame : MonoBehaviour
     [SerializeField] AudioSource correctClick;
     [SerializeField] AudioSource failClick;
     [SerializeField] float timeBetweenClicks;
+    [SerializeField] RectTransform rakingPick;
+    [SerializeField] GameObject gameCanvas;
+    Coroutine pickAnimation;
     int lockLength = 10;
     int correctIndex;
     int currentIndex;
@@ -18,7 +22,7 @@ public class LockPickGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartLockGame();
     }
 
     // Update is called once per frame
@@ -58,6 +62,8 @@ public class LockPickGame : MonoBehaviour
         timeSinceStart = 0f;
         currentIndex = 0;
         //Begin Animation
+        gameCanvas.SetActive(true);
+        pickAnimation = StartCoroutine(WigglePick());
     }
 
     /*
@@ -70,7 +76,30 @@ public class LockPickGame : MonoBehaviour
     private void ExitGame(bool success)
     {
         //End Animation
+        StopCoroutine(pickAnimation);
+        gameCanvas.SetActive(false);
         //Pass on info about whether game was success or fail
         return;
+    }
+
+    IEnumerator WigglePick()
+    {
+        float pos = rakingPick.rotation.eulerAngles.z;
+        float speed = 0.5f;
+        while(true)
+        {
+            while(pos <= -15f)
+            {
+                pos += speed;
+                rakingPick.rotation = Quaternion.Euler(Vector3.forward * pos);
+                yield return null;
+            }
+            while (pos >= -25f)
+            {
+                pos -= speed;
+                rakingPick.rotation = Quaternion.Euler(Vector3.forward * pos);
+                yield return null;
+            }
+        }
     }
 }

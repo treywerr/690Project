@@ -8,7 +8,11 @@ public class SpriteRotation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(player == null)
+        {
+            player = GameObject.Find("Player").transform;
+            Debug.Log("Attach player to Rotation script of " + gameObject.name);
+        }
     }
 
     // Update is called once per frame

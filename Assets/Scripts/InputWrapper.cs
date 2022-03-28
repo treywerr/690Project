@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO: delete most functions, GetAxis should be enough for non-boolean returns
+
 /// <summary>
 /// A wrapper for the Input class that neutralizes controls based on the current control state of the game.
 /// </summary>
@@ -50,15 +52,16 @@ public class InputWrapper
     /// <summary>
     /// Gets the input as modified by the current control state.
     /// </summary>
-    /// <param name="key">The key code of the desired keyboard key.</param>
-    /// <returns>Returns true while the user holds the key identified by key, as long as the game is in a play state.</returns>
-    public static bool GetKey(KeyCode key)
+    /// <param name="axisName">The name of the desired Input axis.</param>
+    /// <param name="acceptedState">The state for which the current control state should match.</param>
+    /// <returns>Returns float depicting value of the given input axis as modified by teh current control state.</returns>
+    public static float GetAxis(string axisName, InputStates acceptedState)
     {
-        if (currentState == InputStates.Gameplay)
+        if (currentState == acceptedState)
         {
-            return Input.GetKey(key);
+            return Input.GetAxisRaw(axisName);
         }
-        return false;
+        return 0;
     }
 
     /// <summary>

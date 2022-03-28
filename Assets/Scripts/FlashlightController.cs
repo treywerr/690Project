@@ -31,7 +31,7 @@ public class FlashlightController : MonoBehaviour
                 litTime = litTimeMax;
             }
         }
-        else if (InputWrapper.GetKey(KeyCode.F))
+        else if (InputWrapper.GetAxis("Flashlight", InputWrapper.InputStates.Gameplay) == 1f)
         {
             /* Flashlight charging */
             // WIND UP SOUND EMITTED
