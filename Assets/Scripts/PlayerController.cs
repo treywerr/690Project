@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private bool crouch = false;
     private bool sprint = false;
 
-    private Vector3 velocity;
+    private Vector3 velocity; // Store velocity vector for gravity
 
     // Start is called before the first frame update
     void Start()
@@ -35,13 +35,8 @@ public class PlayerController : MonoBehaviour
 
         /* Construct movement vector */
 
-        if (!controller.isGrounded)
-            velocity.y -= gravity * Time.deltaTime;
-        else
-        {
-            velocity = Vector3.zero;
-            velocity.y = -2f; // make the player stick to the ground better
-        }
+        velocity.x = 0;
+        velocity.z = 0;
 
         if (crouch)
         {
@@ -59,7 +54,18 @@ public class PlayerController : MonoBehaviour
         }
 
         if (horizontalInput != 0 || verticalInput != 0)
+        {
+            float y = velocity.y;
             velocity = (transform.right * horizontalInput + transform.forward * verticalInput) * speed;
+            velocity.y = y;
+        }
+
+        if (!controller.isGrounded)
+            velocity.y -= gravity * Time.deltaTime;
+        else
+        {
+            velocity.y = -2f; // make the player stick to the ground better
+        }
 
         /* Execute movement */
         controller.Move(velocity * Time.deltaTime);

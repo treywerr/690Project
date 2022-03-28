@@ -22,8 +22,8 @@ public class FlashlightController : MonoBehaviour
     {
         if (lite.enabled) {
             /* Flashlight lit */
-            // OPERATION SOUND EMITTED
-            // Kill enemies, or have enemies be killed (kill them here or in a script on the enemies?)
+            // OPERATION SOUND
+            CastLight();
             litTime -= Time.deltaTime;
             if (litTime <= 0)
             {
@@ -34,7 +34,7 @@ public class FlashlightController : MonoBehaviour
         else if (InputWrapper.GetAxis("Flashlight", InputWrapper.InputStates.Gameplay) == 1f)
         {
             /* Flashlight charging */
-            // WIND UP SOUND EMITTED
+            // WIND UP SOUND
             chargeTime -= Time.deltaTime;
             if (chargeTime <= 0) {
                 lite.enabled = true;
@@ -45,5 +45,12 @@ public class FlashlightController : MonoBehaviour
         {
             chargeTime = chargeTimeMax;
         }
+    }
+
+    void CastLight()
+    {
+        // Kill enemies via raycast
+        
+
     }
 }
