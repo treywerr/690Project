@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3acbf7dad73e5d8478a0eab35db61614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
+  mouseSensitivity: 500
   playerBody: {fileID: 3262146898928395334}
 --- !u!1 &5617122129447328008
 GameObject:
@@ -355,5 +355,4 @@ MonoBehaviour:
   lite: {fileID: 53563918}
   chargeTimeMax: 5
   litTimeMax: 2
-  chargeTime: 5
-  litTime: 2
+  numRays: 7
