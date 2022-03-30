@@ -6,8 +6,8 @@ public class LorePickup : MonoBehaviour
 {
     enum Pickups
     {
-        Default,
-        Default2
+        Necklace,
+        StuffedSnake
     }
     /// <summary>
     /// Which item is this? If correct item is not seen, add it to Pickups enum and make sure theres a corresponding dialogue node in the LorePickups dialogue.

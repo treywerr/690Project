@@ -9,6 +9,9 @@ public class LoreDialogue : MonoBehaviour
 
     public Text NPC_text; //References
     public Text[] PLAYER_text; //References
+    public Text Item_Name; //References
+    public Image Item_Sprite;
+    public Image Background;
     //public KeyCode continueButton; //Button to continue
 
     private bool keyDown = false;
@@ -17,6 +20,9 @@ public class LoreDialogue : MonoBehaviour
     {
         //Disable UI when starting just in case
         NPC_text.gameObject.SetActive(false);
+        Item_Name.gameObject.SetActive(false);
+        Item_Sprite.gameObject.SetActive(false);
+        Background.gameObject.SetActive(false);
         foreach (Text t in PLAYER_text)
             t.transform.parent.gameObject.SetActive(false);
 
@@ -81,6 +87,11 @@ public class LoreDialogue : MonoBehaviour
         {
             NPC_text.gameObject.SetActive(true);
             NPC_text.text = data.comments[data.commentIndex];
+            Item_Name.gameObject.SetActive(true);
+            Item_Name.text = data.extraVars["Title"].ToString();
+            Item_Sprite.gameObject.SetActive(true);
+            Item_Sprite.sprite = data.sprite;
+            Background.gameObject.SetActive(true);
         }
         else //For Player. It will activate the required Buttons and set their text
         {
@@ -105,6 +116,9 @@ public class LoreDialogue : MonoBehaviour
     void WipeAll()
     {
         NPC_text.gameObject.SetActive(false);
+        Item_Name.gameObject.SetActive(false);
+        Item_Sprite.gameObject.SetActive(false);
+        Background.gameObject.SetActive(false);
         foreach (Text t in PLAYER_text)
             t.transform.parent.gameObject.SetActive(false);
     }
