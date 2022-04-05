@@ -7,7 +7,9 @@ public class LockPickGame : MonoBehaviour
 {
     [SerializeField] AudioSource neutralClick;
     [SerializeField] AudioSource correctClick;
-    [SerializeField] AudioSource failClick;
+    [SerializeField] AudioSource failSound;
+    [SerializeField] AudioSource successSound;
+    [SerializeField] AudioSource ambientNoises;
     [SerializeField] float timeBetweenClicks;
     [SerializeField] RectTransform rakingPick;
     [SerializeField] GameObject gameCanvas;
@@ -40,17 +42,24 @@ public class LockPickGame : MonoBehaviour
         {
             if(currentIndex == correctIndex)
             {
-                correctClick.Play();
+                successSound.Play();
                 ExitGame(true);
                 return;
             }
-            failClick.Play();
+            failSound.Play();
             ExitGame(false);
             return;
         }
         if(oldIndex != currentIndex)
         {
-            neutralClick.Play();
+            if(currentIndex == correctIndex)
+            {
+                correctClick.Play();
+            }
+            else
+            {
+                neutralClick.Play();
+            }
         }
     }
 
@@ -64,6 +73,8 @@ public class LockPickGame : MonoBehaviour
         //Begin Animation
         gameCanvas.SetActive(true);
         pickAnimation = StartCoroutine(WigglePick());
+        ambientNoises.loop = true;
+        ambientNoises.Play();
     }
 
     /*
@@ -78,6 +89,8 @@ public class LockPickGame : MonoBehaviour
         //End Animation
         StopCoroutine(pickAnimation);
         gameCanvas.SetActive(false);
+        ambientNoises.Stop();
+        playingGame = false;
         //Pass on info about whether game was success or fail
         return;
     }
