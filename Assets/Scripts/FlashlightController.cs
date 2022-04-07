@@ -9,26 +9,32 @@ public class FlashlightController : MonoBehaviour
     public float litTimeMax = 2;
     private float chargeTime = 5;
     private float litTime = 2;
+    private float intens;
     [SerializeField] private int numRays = 7;
 
     // Start is called before the first frame update
     void Start()
     {
         lite.enabled = false;
+        intens = lite.intensity;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (lite.enabled) {
+        if (chargeTime <= 0)
+        {
             /* Flashlight lit */
             // OPERATION SOUND
+            lite.intensity = intens;
+            lite.enabled = true;
             CastLight();
             litTime -= Time.deltaTime;
             if (litTime <= 0)
             {
                 lite.enabled = false;
                 litTime = litTimeMax;
+                chargeTime = chargeTimeMax;
             }
         }
         else if (InputWrapper.GetAxis("Flashlight", InputWrapper.InputStates.Gameplay) == 1f)
@@ -36,15 +42,19 @@ public class FlashlightController : MonoBehaviour
             /* Flashlight charging */
             // WIND UP SOUND
             chargeTime -= Time.deltaTime;
-            if (chargeTime <= 0) {
-                lite.enabled = true;
-                chargeTime = chargeTimeMax;
-            }
+            // Flicker
+            lite.intensity = 1;
+            lite.enabled = Flicker(chargeTime);
         }
         else
         {
             chargeTime = chargeTimeMax;
         }
+    }
+
+    bool Flicker(float x)
+    {
+        return (Mathf.Cos(chargeTimeMax/ (x*x)) < 0);
     }
 
     void CastLight()
