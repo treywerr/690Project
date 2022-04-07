@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private CharacterController controller;
+    private Transform headPos;
+    private Transform crouchPos;
+    private Transform camPos;
 
     public float defaultSpeed = 5f;
     public float gravity = 9.8f;
@@ -21,6 +24,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        headPos = this.gameObject.transform.GetChild(2);
+        crouchPos = this.gameObject.transform.GetChild(1);
+        camPos = this.gameObject.transform.GetChild(0);
         speed = defaultSpeed;
     }
 
@@ -41,11 +47,13 @@ public class PlayerController : MonoBehaviour
         if (crouch)
         {
             speed = defaultSpeed * 0.5f;
-            transform.localScale = new Vector3(1, 0.5f, 1); // shorten the player
+            //transform.localScale = new Vector3(1, 0.5f, 1); // shorten the player
+            camPos.localPosition = crouchPos.localPosition;
         }
         else
         {
-            transform.localScale = new Vector3(1, 1, 1); // make player normal height when not crouching
+            //transform.localScale = new Vector3(1, 1, 1); // make player normal height when not crouching
+            camPos.localPosition = headPos.localPosition;
 
             if (sprint)
                 speed = defaultSpeed * 1.5f;
