@@ -217,7 +217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967140796004240667}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.29, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3262146898928395334}
@@ -452,6 +452,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bb99f493aba02540895b397cb2d97ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  headPos: {fileID: 5232882109530290599}
+  crouchPos: {fileID: 7376531014645450768}
+  camPos: {fileID: 963194228}
   defaultSpeed: 5
   gravity: 9.8
 --- !u!143 &754318572
