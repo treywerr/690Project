@@ -60,7 +60,7 @@ public class FlashlightController : MonoBehaviour
     void CastLight()
     {
         float angleInc = lite.spotAngle / numRays;
-        for (int i = 1; i <= numRays; i++)
+        for (int i = 0; i <= numRays; i++)
         {
             Vector3 ray = Quaternion.Euler(0, angleInc * i - lite.spotAngle/2, 0) * transform.TransformDirection(Vector3.forward);
             Debug.DrawRay(transform.position, ray * lite.range, Color.yellow);
