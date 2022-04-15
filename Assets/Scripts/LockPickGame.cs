@@ -13,6 +13,7 @@ public class LockPickGame : MonoBehaviour
     [SerializeField] float timeBetweenClicks;
     [SerializeField] RectTransform rakingPick;
     [SerializeField] GameObject gameCanvas;
+    [SerializeField] RectTransform shackle;
     Coroutine pickAnimation;
     int lockLength = 10;
     int correctIndex;
@@ -37,6 +38,7 @@ public class LockPickGame : MonoBehaviour
         timeSinceStart += Time.deltaTime;
         int oldIndex = currentIndex;
         currentIndex = (int)(timeSinceStart / timeBetweenClicks);
+        Debug.Log("current index: " + currentIndex + "frame to click? = " + (currentIndex == correctIndex));
         //For now, consider this a menu submit or something, figure out what actually want later
         if(InputWrapper.GetMenuSubmit() == 1f)
         {
@@ -61,11 +63,21 @@ public class LockPickGame : MonoBehaviour
                 neutralClick.Play();
             }
         }
+        if(currentIndex > lockLength)
+        {
+            failSound.Play();
+            ExitGame(false);
+            return;
+        }
     }
 
     public void StartLockGame()
     {
         //RandomizeGame();
+        //move to different spot later?
+        InputWrapper.ChangeState(InputWrapper.InputStates.Menus);
+
+
         correctIndex = Random.Range(2, lockLength);
         playingGame = true;
         timeSinceStart = 0f;
@@ -74,7 +86,8 @@ public class LockPickGame : MonoBehaviour
         gameCanvas.SetActive(true);
         pickAnimation = StartCoroutine(WigglePick());
         ambientNoises.loop = true;
-        ambientNoises.Play();
+        ambientNoises.PlayDelayed(0.5f);
+        Debug.Log("Start game with index: " + correctIndex);
     }
 
     /*
@@ -88,31 +101,63 @@ public class LockPickGame : MonoBehaviour
     {
         //End Animation
         StopCoroutine(pickAnimation);
-        gameCanvas.SetActive(false);
+
+        if(success)
+        {
+            StartCoroutine(RaiseShackle());
+        }
+        else
+        {
+            StartCoroutine(FailTimeout());
+        }
+        
         ambientNoises.Stop();
         playingGame = false;
-        //Pass on info about whether game was success or fail
+        //Pass on info about whether game was success or fail after shackle animation?
         return;
     }
 
     IEnumerator WigglePick()
     {
         float pos = rakingPick.rotation.eulerAngles.z;
-        float speed = 0.5f;
+        float speed = 1f;
         while(true)
         {
-            while(pos <= -15f)
+            while(pos <= 50f)
             {
                 pos += speed;
-                rakingPick.rotation = Quaternion.Euler(Vector3.forward * pos);
+                rakingPick.localRotation = Quaternion.Euler(Vector3.forward * pos);
                 yield return null;
             }
-            while (pos >= -25f)
+            while (pos >= 20f)
             {
                 pos -= speed;
-                rakingPick.rotation = Quaternion.Euler(Vector3.forward * pos);
+                rakingPick.localRotation = Quaternion.Euler(Vector3.forward * pos);
                 yield return null;
             }
         }
+    }
+
+    IEnumerator RaiseShackle()
+    {
+        Vector3 pos = shackle.anchoredPosition;
+        float speed = 1f;
+        while(pos.y <= -60f)
+        {
+            pos += speed * Vector3.up;
+            shackle.anchoredPosition = pos;
+            yield return null;
+        }
+        yield return new WaitForSeconds(1.5f);
+        //Change to different spot later?
+        InputWrapper.ChangeState(InputWrapper.InputStates.Gameplay);
+        gameCanvas.SetActive(false);
+    }
+
+    IEnumerator FailTimeout()
+    {
+        yield return new WaitForSeconds(1.5f);
+        InputWrapper.ChangeState(InputWrapper.InputStates.Gameplay);
+        gameCanvas.SetActive(false);
     }
 }

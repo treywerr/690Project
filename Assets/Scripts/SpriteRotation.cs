@@ -11,7 +11,7 @@ public class SpriteRotation : MonoBehaviour
         if(player == null)
         {
             player = GameObject.Find("Player").transform;
-            Debug.Log("Attach player to Rotation script of " + gameObject.name);
+            //Debug.Log("Attach player to Rotation script of " + gameObject.name);
         }
     }
 
