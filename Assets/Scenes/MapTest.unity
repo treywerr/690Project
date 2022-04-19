@@ -18617,6 +18617,7 @@ GameObject:
   - component: {fileID: 1987946091}
   - component: {fileID: 1987946090}
   - component: {fileID: 1987946089}
+  - component: {fileID: 1987946092}
   m_Layer: 0
   m_Name: Tree (15)
   m_TagString: Untagged
@@ -18702,6 +18703,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 120
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1987946092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987946088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79be037906c8c234a9266798cccaac6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  front: {fileID: 21300000, guid: 5b1e1179ae156034b97b4a23278a54b9, type: 3}
+  left: {fileID: 21300000, guid: 002f31d4a7fbe8d4bb315011f825a2da, type: 3}
+  right: {fileID: 21300000, guid: beae78e1010465b49a02f1f351824bb9, type: 3}
+  back: {fileID: 21300000, guid: beae78e1010465b49a02f1f351824bb9, type: 3}
 --- !u!1 &1990412604
 GameObject:
   m_ObjectHideFlags: 0
