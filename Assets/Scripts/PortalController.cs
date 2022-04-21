@@ -16,7 +16,7 @@ public class PortalController : MonoBehaviour
             SceneManager.LoadScene(scene);
         }
     }
-    void OnCollisionEnter(Collision coll)
+    void OnTriggerEnter(Collider coll)
     {
         Debug.Log("Collided");
         if (coll.gameObject.tag == "Player")
