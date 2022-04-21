@@ -10,8 +10,9 @@ public class It4Enemy : MonoBehaviour {
     public bool playerIsInLOS = false;
 
     public float fieldOfViewAngle = 160f;
-
-    public float losRadius = 45f;
+    public static float hearMult = 1f;
+    public float hearingRadius = 4f;
+    public float losRadius = 20f;
 
     private bool aiMemorizesPlayer = false;
 
@@ -67,8 +68,8 @@ public class It4Enemy : MonoBehaviour {
         float distance = Vector3.Distance(PlayerMove.transform.position, transform.position);
         if(distance <= losRadius){
             CheckLOS();
-        }
 
+        }
         if(nav.isActiveAndEnabled){
             if(playerIsInLOS == false && aiMemorizesPlayer == false && aiHeardPlayer == false){
                 Patrol();
@@ -143,18 +144,14 @@ public class It4Enemy : MonoBehaviour {
 
         float distance = Vector3.Distance(PlayerMove.transform.position, transform.position);
 
-        if (distance <= noiseTravelDistance){
-            if (Input.GetButton("Fire1")){
-                noisePosition = PlayerMove.transform.position;
-                aiHeardPlayer = true;
-            }
-            else{
-                aiHeardPlayer = false; 
-                canSpin = false;
-            }
-
+        if (distance <= hearingRadius * hearMult){
+            noisePosition = PlayerMove.transform.position;
+            aiHeardPlayer = true;
         }
-      
+        else{
+            aiHeardPlayer = false; 
+            canSpin = false;
+        }
     }
 
     void GoToNoisePosition(){
