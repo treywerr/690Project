@@ -25,6 +25,10 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         speed = defaultSpeed;
+        if (Respawner.getLocalSpawn() == null)
+        {
+            Respawner.setLocalSpawn(GameObject.Find("SpawnPoint").transform);
+        }
     }
 
     // Update is called once per frame

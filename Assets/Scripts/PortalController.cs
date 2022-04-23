@@ -23,7 +23,7 @@ public class PortalController : MonoBehaviour
         {
             Debug.Log("Portaled");
             InputWrapper.ChangeState(InputWrapper.InputStates.Cutscene);
-            SceneManager.LoadScene(scene);
+            Respawner.ChangeScene(scene);
         }
     }
 }
