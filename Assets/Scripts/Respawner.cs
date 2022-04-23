@@ -37,4 +37,17 @@ public class Respawner
         spawnLocation = spawn.transform;
         InputWrapper.ChangeState(InputWrapper.InputStates.Gameplay);
     }
+
+    public static void SaveImportantInfo()
+    {
+        //number of flares
+        //most recent checkpoint/spawnpoint
+        //current scene
+        //info on what mementos have been grabbed
+    }
+
+    public static void LoadImportantInfo()
+    {
+
+    }
 }
