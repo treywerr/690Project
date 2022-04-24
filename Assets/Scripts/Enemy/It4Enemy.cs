@@ -61,6 +61,10 @@ public class It4Enemy : MonoBehaviour {
         waitTime = startWaitTime; 
         randomSpot = Random.Range(0, moveSpots.Length); 
         randomStrafeDir = Random.Range(0, 2);
+        if (PlayerMove == null)
+        {
+            PlayerMove = GameObject.Find("Player");
+        }
     }
 
 

@@ -5,18 +5,48 @@ using UnityEngine;
 public class StreetlightController : MonoBehaviour
 {
     private Light lite;
-    //[SerializeField] private int numRays = 7;
+    private bool isFlickering = false;
+    [SerializeField] private float flickerDelayMax = 0.5f;
+    private SpriteRenderer liteRend;
+    public Sprite unlitLamp;
+    public Sprite litLamp;
 
     // Start is called before the first frame update
     void Start()
     {
         lite = gameObject.GetComponent<Light>();
+        liteRend = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        FindEnemies();
+        if (!isFlickering)
+        {
+            StartCoroutine(Flicker());
+        }
+
+        if (lite.enabled)
+        {
+            FindEnemies();
+        }
+    }
+
+    IEnumerator Flicker()
+    {
+        isFlickering = true;
+
+        lite.enabled = false;
+        liteRend.sprite = unlitLamp;
+        float delay = Random.Range(0.01f, flickerDelayMax);
+        yield return new WaitForSeconds(delay);
+
+        lite.enabled = true;
+        liteRend.sprite = litLamp;
+        delay = Random.Range(0.01f, flickerDelayMax);
+        yield return new WaitForSeconds(delay);
+
+        isFlickering = false;
     }
 
     void FindEnemies()
@@ -29,42 +59,6 @@ public class StreetlightController : MonoBehaviour
             Destroy(enemy);
         }
     }
-
-
-    //change to concurrent circles inside each other
-    /*void CastLight()
-    {
-        float angleInc = lite.spotAngle / numRays;
-        for (int i = 0; i <= numRays; i++)
-        {
-            float angle = angleInc * i - lite.spotAngle / 2;
-            Vector3 ray = Quaternion.Euler(0, 0, angle) * transform.TransformDirection(Vector3.forward);
-            Vector3 ray2 = Quaternion.Euler(angle, 0, 0) * transform.TransformDirection(Vector3.forward);
-            Debug.DrawRay(transform.position, ray * lite.range, Color.yellow);
-            Debug.DrawRay(transform.position, ray2 * lite.range, Color.red);
-            //Vector3 ray3 = Quaternion.Euler(lite.spotAngle, 0, angle) * transform.TransformDirection(Vector3.forward);
-            //Debug.DrawRay(transform.position, ray3 * lite.range, Color.blue);
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, ray, out hit, lite.range))
-            {
-                if (hit.transform.tag == "Enemy")
-                {
-                    // Play enemy death animation/sound
-                    // delay destroy by appropriate amount for animation/sound to play
-                    Destroy(hit.transform.gameObject);
-                }
-            }
-            if (Physics.Raycast(transform.position, ray2, out hit, lite.range))
-            {
-                if (hit.transform.tag == "Enemy")
-                {
-                    // Play enemy death animation/sound
-                    // delay destroy by appropriate amount for animation/sound to play
-                    Destroy(hit.transform.gameObject);
-                }
-            }
-        }
-    }*/
 
     HashSet<GameObject> ConeCast(Vector3 origin, Vector3 direction, int numberOfRays, float psi)
     {
