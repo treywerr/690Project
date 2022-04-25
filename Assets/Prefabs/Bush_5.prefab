@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5972403718186261506}
   - component: {fileID: 818806586442399040}
   m_Layer: 0
-  m_Name: Hedge 4 1
+  m_Name: Bush_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8177236774382692829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 136.49, y: 6.2, z: 61.87}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -96,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 12, y: 25, z: 1}
-  m_Center: {x: 7, y: -14.722172, z: 0}
+  m_Size: {x: 11.200001, y: 8.881301, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!331 &5972403718186261506
 SpriteMask:
   m_ObjectHideFlags: 0
