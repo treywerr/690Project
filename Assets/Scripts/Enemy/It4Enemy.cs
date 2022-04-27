@@ -34,8 +34,7 @@ public class It4Enemy : MonoBehaviour {
     private float waitTime; 
     public float startWaitTime = 1f;
     NavMeshAgent nav;
-    public AudioClip clip;
-    private bool soundPlayed = false;
+
     //Ai strafe 
     public float distToPlayer = 5.0f; // straferadius
     private float randomStrafeStartTime; 
@@ -50,7 +49,11 @@ public class It4Enemy : MonoBehaviour {
     public float chaseRadius = 20f;
     public float facePlayerFactor = 20f;
 
-
+    // Audio
+    public AudioSource source;
+    public AudioClip alertStinger;
+    public AudioClip[] alertSounds; // add an array of possible sounds for variety
+    private bool playerSeen = false;
 
     private void Awake(){
         nav = GetComponent<NavMeshAgent>(); 
@@ -72,8 +75,8 @@ public class It4Enemy : MonoBehaviour {
         float distance = Vector3.Distance(PlayerMove.transform.position, transform.position);
         if(distance <= losRadius){
             CheckLOS();
-
         }
+
         if(nav.isActiveAndEnabled){
             if(playerIsInLOS == false && aiMemorizesPlayer == false && aiHeardPlayer == false){
                 Patrol();
@@ -82,22 +85,35 @@ public class It4Enemy : MonoBehaviour {
 
                 StopCoroutine(AiMemory());
 
+                playerSeen = false;
             }else if(aiHeardPlayer == true && playerIsInLOS == false && aiMemorizesPlayer == false){
                 canSpin = true;
                 GoToNoisePosition();
+
+                playerSeen = false;
             }else if(playerIsInLOS == true){
                 aiMemorizesPlayer = true;
 
                 FacePlayer();
-                if(soundPlayed == false){
-                    soundPlayed = true;
-                    AudioSource.PlayClipAtPoint(clip,PlayerMove.transform.position);
+
+                if (!playerSeen)
+                {
+                    playerSeen = true;
+
+                    AudioSource.PlayClipAtPoint(alertStinger,PlayerMove.transform.position);
+                    AudioClip newClip = alertSounds[Random.Range(0, alertSounds.Length - 1)];
+                    while (source.clip == newClip) // ensure same sound isn't selected twice in a row
+                        newClip = alertSounds[Random.Range(0, alertSounds.Length - 1)];
+                    source.clip = newClip;
+                    source.Play();
                 }
 
                 ChasePlayer();
             }else if(aiMemorizesPlayer == true && playerIsInLOS == false){
                 ChasePlayer();
                 StartCoroutine(AiMemory());
+
+                playerSeen = false;
             }
         }
     }
@@ -183,11 +199,8 @@ public class It4Enemy : MonoBehaviour {
             yield return null;
 
         }
-            soundPlayed = false;
-            aiHeardPlayer = false; 
-            aiMemorizesPlayer = false;
-            
-
+        aiHeardPlayer = false; 
+        aiMemorizesPlayer = false;
     }
     
 
