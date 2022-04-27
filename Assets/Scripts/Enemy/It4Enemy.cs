@@ -74,6 +74,7 @@ public class It4Enemy : MonoBehaviour {
 
 
     void Update() {
+
         float distance = Vector3.Distance(PlayerMove.transform.position, transform.position);
         if(distance <= losRadius){
             CheckLOS();
@@ -103,9 +104,9 @@ public class It4Enemy : MonoBehaviour {
                     playerSeen = true;
 
                     AudioSource.PlayClipAtPoint(alertStinger,PlayerMove.transform.position);
-                    AudioClip newClip = alertSounds[Random.Range(0, alertSounds.Length - 1)];
+                    AudioClip newClip = alertSounds[Random.Range(0, alertSounds.Length)];
                     while (source.clip == newClip) // ensure same sound isn't selected twice in a row
-                        newClip = alertSounds[Random.Range(0, alertSounds.Length - 1)];
+                        newClip = alertSounds[Random.Range(0, alertSounds.Length)];
                     source.clip = newClip;
                     source.Play();
                 }

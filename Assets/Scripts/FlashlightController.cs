@@ -16,6 +16,7 @@ public class FlashlightController : MonoBehaviour
     public AudioSource source;
     public AudioClip chargeSound;
     public AudioClip runningSound;
+    public AudioClip windDownSound;
 
     // Start is called before the first frame update
     void Start()
@@ -67,9 +68,10 @@ public class FlashlightController : MonoBehaviour
             chargeTime = chargeTimeMax;
             lite.enabled = false;
 
-            if (source.isPlaying)
+            if (source.isPlaying && source.clip != windDownSound)
             {
-                source.Stop();
+                source.clip = windDownSound;
+                source.Play();
             }
         }
     }
