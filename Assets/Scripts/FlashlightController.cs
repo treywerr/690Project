@@ -12,6 +12,11 @@ public class FlashlightController : MonoBehaviour
     private float intens;
     [SerializeField] private int numRays = 7;
 
+    // Audio
+    public AudioSource source;
+    public AudioClip chargeSound;
+    public AudioClip runningSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +30,12 @@ public class FlashlightController : MonoBehaviour
         if (chargeTime <= 0)
         {
             /* Flashlight lit */
+
             // OPERATION SOUND
+            source.clip = runningSound;
+            if (!source.isPlaying)
+                source.Play();
+
             lite.intensity = intens;
             lite.enabled = true;
             CastLight();
@@ -40,8 +50,14 @@ public class FlashlightController : MonoBehaviour
         else if (InputWrapper.GetAxis("Flashlight", InputWrapper.InputStates.Gameplay) == 1f)
         {
             /* Flashlight charging */
+
             // WIND UP SOUND
+            source.clip = chargeSound;
+            if (!source.isPlaying)
+                source.Play();
+
             chargeTime -= Time.deltaTime;
+
             // Flicker
             lite.intensity = 1;
             lite.enabled = Flicker(chargeTime);
@@ -49,6 +65,12 @@ public class FlashlightController : MonoBehaviour
         else
         {
             chargeTime = chargeTimeMax;
+            lite.enabled = false;
+
+            if (source.isPlaying)
+            {
+                source.Stop();
+            }
         }
     }
 

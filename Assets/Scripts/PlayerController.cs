@@ -18,6 +18,12 @@ public class PlayerController : MonoBehaviour
     private bool crouch = false;
     private bool sprint = false;
 
+    public AudioSource source;
+    public AudioClip walkSound;
+    public AudioClip sprintSound;
+    public AudioClip crouchSound;
+    private bool moving = false;
+
     private Vector3 velocity; // Store velocity vector for gravity
 
     // Start is called before the first frame update
@@ -80,5 +86,28 @@ public class PlayerController : MonoBehaviour
 
         /* Execute movement */
         controller.Move(velocity * Time.deltaTime);
+
+        if (controller.isGrounded)
+        {
+            if (velocity.x != 0 || velocity.z != 0)
+            {
+                moving = true;
+
+                if (crouch)
+                    source.clip = crouchSound;
+                else if (sprint)
+                    source.clip = sprintSound;
+                else
+                    source.clip = walkSound;
+
+                if (!source.isPlaying)
+                    source.Play();
+            }
+            else if (moving)
+            {
+                source.Stop();
+                moving = false;
+            }
+        }
     }
 }
