@@ -54,6 +54,8 @@ public class It4Enemy : MonoBehaviour {
     public AudioClip alertStinger;
     public AudioClip[] alertSounds; // add an array of possible sounds for variety
     private bool playerSeen = false;
+    public AudioClip caughtStinger;
+    private bool playerCaught = false;
 
     private void Awake(){
         nav = GetComponent<NavMeshAgent>(); 
@@ -124,6 +126,14 @@ public class It4Enemy : MonoBehaviour {
         if(distance <= chaseRadius && distance > distToPlayer){
             nav.SetDestination(PlayerMove.transform.position);
         }else if(nav.isActiveAndEnabled && distance <= distToPlayer){
+            /* Kill Player */
+            if (!playerCaught)
+            {
+                playerCaught = true;
+                AudioSource.PlayClipAtPoint(caughtStinger, PlayerMove.transform.position);
+            }
+
+            /* Enemy Behavior */
             randomStrafeDir = Random.Range(0,2);
             randomStrafeStartTime = Random.Range(t_minStrafe, t_maxStrafe);
 
