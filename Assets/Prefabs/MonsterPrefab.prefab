@@ -429,20 +429,21 @@ MonoBehaviour:
   PlayerMove: {fileID: 0}
   playerIsInLOS: 0
   fieldOfViewAngle: 160
-  hearingRadius: 4
+  hearingRadius: 15
   losRadius: 45
   memoryStartTime: 10
   noiseTravelDistance: 50
   spinSpeed: 3
   spinTime: 3
-  moveSpots: []
+  moveSpots:
+  - {fileID: 0}
   startWaitTime: 1
   distToPlayer: 5
   t_minStrafe: 0
   t_maxStrafe: 0
   strafeRight: {fileID: 837911343971378450}
   strafeLeft: {fileID: 837911344515349259}
-  chaseRadius: 20
+  chaseRadius: 45
   facePlayerFactor: 20
   source: {fileID: 300487483}
   alertStinger: {fileID: 8300000, guid: 0988eb1c35e9f414b9ea4de4f4a51129, type: 3}

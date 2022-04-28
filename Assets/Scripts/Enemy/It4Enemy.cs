@@ -187,7 +187,7 @@ public class It4Enemy : MonoBehaviour {
 
     void GoToNoisePosition(){
         nav.SetDestination(noisePosition);
-        if (Vector3.Distance(transform. position, noisePosition) <= 5f && canSpin == true){
+        if (Vector3.Distance(transform.position, noisePosition) <= 5f && canSpin == true){
             isSpinningTime += Time.deltaTime;
             transform.Rotate (Vector3.up * spinSpeed, Space. World);
             if (isSpinningTime >= spinTime){
