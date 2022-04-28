@@ -202,7 +202,7 @@ Skybox:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 3acf24b321320b047aaf669d75bfc1e1, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: ebf0417cbc637484fa1347a946f10fd2, type: 2}
 --- !u!1 &1967140796004240667
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +510,7 @@ MonoBehaviour:
   source: {fileID: 1190589318}
   chargeSound: {fileID: 8300000, guid: c9ba7642ea86c7645ab9d911585340e7, type: 3}
   runningSound: {fileID: 8300000, guid: 29d3a5b8b85a89e4ea41838ba897e27e, type: 3}
+  windDownSound: {fileID: 0}
 --- !u!82 &1190589311
 AudioSource:
   m_ObjectHideFlags: 0
