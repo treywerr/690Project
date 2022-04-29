@@ -41,8 +41,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         /* Get the movement inputs */
-        horizontalInput = InputWrapper.GetMovement("Horizontal");
-        verticalInput = InputWrapper.GetMovement("Vertical");
+        horizontalInput = InputWrapper.GetAxis("Horizontal", InputWrapper.InputStates.Gameplay);
+        verticalInput = InputWrapper.GetAxis("Vertical", InputWrapper.InputStates.Gameplay);
         crouch = InputWrapper.GetAxis("Crouch", InputWrapper.InputStates.Gameplay) == 1f;
         sprint = InputWrapper.GetAxis("Sprint", InputWrapper.InputStates.Gameplay) == 1f;
 

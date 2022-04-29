@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 1147414482981390879}
+  - component: {fileID: 7879008243613243303}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -187,6 +188,19 @@ Skybox:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_CustomSkybox: {fileID: 2100000, guid: ebf0417cbc637484fa1347a946f10fd2, type: 2}
+--- !u!114 &7879008243613243303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab77204010ea4714db746d17a1396a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactPrompt: {fileID: 2501490018098193666}
 --- !u!1 &1967140796004240667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,6 +1057,11 @@ MonoBehaviour:
 --- !u!1 &1093379567791962572 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5341372871990912455, guid: 6ea6fa38f6053724698f4cf341042dd1, type: 3}
+  m_PrefabInstance: {fileID: 4975396490232323083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2501490018098193666 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7474633239603738889, guid: 6ea6fa38f6053724698f4cf341042dd1, type: 3}
   m_PrefabInstance: {fileID: 4975396490232323083}
   m_PrefabAsset: {fileID: 0}
 --- !u!82 &1231122545723174107

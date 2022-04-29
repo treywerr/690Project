@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LockPickGame : MonoBehaviour
+public class LockPickGame : PlayerInteractionEffect
 {
     [SerializeField] AudioSource neutralClick;
     [SerializeField] AudioSource correctClick;
@@ -14,6 +14,7 @@ public class LockPickGame : MonoBehaviour
     [SerializeField] RectTransform rakingPick;
     [SerializeField] GameObject gameCanvas;
     [SerializeField] RectTransform shackle;
+    [SerializeField] UnlockEffect unlockEffect;
     Coroutine pickAnimation;
     int lockLength = 10;
     int correctIndex;
@@ -25,7 +26,7 @@ public class LockPickGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartLockGame();
+        //StartLockGame();
     }
 
     // Update is called once per frame
@@ -40,7 +41,7 @@ public class LockPickGame : MonoBehaviour
         currentIndex = (int)(timeSinceStart / timeBetweenClicks);
         Debug.Log("current index: " + currentIndex + "frame to click? = " + (currentIndex == correctIndex));
         //For now, consider this a menu submit or something, figure out what actually want later
-        if(InputWrapper.GetMenuSubmit() == 1f)
+        if(InputWrapper.GetAxis("Submit", InputWrapper.InputStates.Menus) == 1f)
         {
             if(currentIndex == correctIndex)
             {
@@ -120,7 +121,7 @@ public class LockPickGame : MonoBehaviour
     IEnumerator WigglePick()
     {
         float pos = rakingPick.rotation.eulerAngles.z;
-        float speed = 1f;
+        float speed = 0.2f;
         while(true)
         {
             while(pos <= 50f)
@@ -152,6 +153,7 @@ public class LockPickGame : MonoBehaviour
         //Change to different spot later?
         InputWrapper.ChangeState(InputWrapper.InputStates.Gameplay);
         gameCanvas.SetActive(false);
+        unlockEffect.UnlockAction();
     }
 
     IEnumerator FailTimeout()
@@ -159,5 +161,10 @@ public class LockPickGame : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         InputWrapper.ChangeState(InputWrapper.InputStates.Gameplay);
         gameCanvas.SetActive(false);
+    }
+
+    public override void ActivateEffect()
+    {
+        StartLockGame();
     }
 }

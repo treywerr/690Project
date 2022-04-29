@@ -47,7 +47,7 @@ public class LoreDialogue : MonoBehaviour
         */
         if (VD.isActive)
         {
-            if (!VD.nodeData.isPlayer && lastFrameDown && InputWrapper.GetMenuSubmit() == 0f)
+            if (!VD.nodeData.isPlayer && lastFrameDown && InputWrapper.GetAxis("Submit", InputWrapper.InputStates.Menus) == 0f)
             {
                 if (keyDown)
                 {
@@ -61,12 +61,12 @@ public class LoreDialogue : MonoBehaviour
         }
         else
         {
-            if (lastFrameDown && InputWrapper.GetMenuSubmit() == 0f)
+            if (lastFrameDown && InputWrapper.GetAxis("Submit", InputWrapper.InputStates.Menus) == 0f)
             {
                 //Start();
             }
         }
-        lastFrameDown = InputWrapper.GetMenuSubmit() == 1f;
+        lastFrameDown = InputWrapper.GetAxis("Submit", InputWrapper.InputStates.Menus) == 1f;
     }
 
     //This method is called by the UI Buttons! Check their button component in the Inspector!

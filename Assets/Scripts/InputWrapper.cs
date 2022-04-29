@@ -63,7 +63,7 @@ public class InputWrapper
         }
         return 0;
     }
-
+    /*
     /// <summary>
     /// Gets the input as modified by the current control state.
     /// </summary>
@@ -160,4 +160,5 @@ public class InputWrapper
         }
         return 0;
     }
+    */
 }
