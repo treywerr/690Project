@@ -8,7 +8,7 @@ public class OpenChest : UnlockEffect
 
     public override void UnlockAction()
     {
-        Instantiate(itemToSpawn, transform.position, transform.rotation);
+        Instantiate(itemToSpawn, transform.position + Vector3.up, transform.rotation);
         Destroy(gameObject);
     }
 }

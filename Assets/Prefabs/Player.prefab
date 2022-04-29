@@ -151,7 +151,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -329,6 +329,7 @@ MonoBehaviour:
   Item_Name: {fileID: 1093379569303488441}
   Item_Sprite: {fileID: 1093379568594129749}
   Background: {fileID: 1093379567714341222}
+  defaultImage: {fileID: 21300000, guid: 3ee04ceb05556014984f5cfa5767a2fa, type: 3}
 --- !u!1 &5617122129447328008
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +418,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8253853313360044488}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -508,8 +509,8 @@ MonoBehaviour:
   numRays: 7
   source: {fileID: 1190589318}
   chargeSound: {fileID: 8300000, guid: c9ba7642ea86c7645ab9d911585340e7, type: 3}
-  runningSound: {fileID: 8300000, guid: 29d3a5b8b85a89e4ea41838ba897e27e, type: 3}
-  windDownSound: {fileID: 0}
+  runningSound: {fileID: 8300000, guid: 7096728c17343524e9e00f83bd2704cf, type: 3}
+  windDownSound: {fileID: 8300000, guid: 7e5f4a3afe315b64295b9a69e99c965a, type: 3}
 --- !u!82 &1190589311
 AudioSource:
   m_ObjectHideFlags: 0
@@ -617,7 +618,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c9ba7642ea86c7645ab9d911585340e7, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -979,10 +980,6 @@ PrefabInstance:
       propertyPath: failSound
       value: 
       objectReference: {fileID: 1231122545723174107}
-    - target: {fileID: 5341372871990912453, guid: 6ea6fa38f6053724698f4cf341042dd1, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5341372871990912453, guid: 6ea6fa38f6053724698f4cf341042dd1, type: 3}
       propertyPath: correctClick
       value: 

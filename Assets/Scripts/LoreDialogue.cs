@@ -12,6 +12,7 @@ public class LoreDialogue : MonoBehaviour
     public Text Item_Name; //References
     public Image Item_Sprite;
     public Image Background;
+    [SerializeField] Sprite defaultImage;
     //public KeyCode continueButton; //Button to continue
 
     private bool keyDown = false;
@@ -90,7 +91,7 @@ public class LoreDialogue : MonoBehaviour
             Item_Name.gameObject.SetActive(true);
             Item_Name.text = data.extraVars["Title"].ToString();
             Item_Sprite.gameObject.SetActive(true);
-            Item_Sprite.sprite = data.sprite;
+            Item_Sprite.sprite = data.sprite ? data.sprite : defaultImage;
             Background.gameObject.SetActive(true);
         }
         else //For Player. It will activate the required Buttons and set their text
