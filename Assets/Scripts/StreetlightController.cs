@@ -56,6 +56,8 @@ public class StreetlightController : MonoBehaviour
         enemies.UnionWith(ConeCast(transform.position, Vector3.down, 1, 0));
         foreach(GameObject enemy in enemies)
         {
+            // Play enemy death animation/sound
+            // delay destroy by appropriate amount for animation/sound to play
             Destroy(enemy);
         }
     }

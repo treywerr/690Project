@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
         if (crouch)
         {
             speed = defaultSpeed * 0.5f;
+            //It4Enemy.hearMult = .5f;
+            StealthController.Request(.5f, 0);
             // shorten the player
             if (camPos.localPosition != crouchPos.localPosition)
                 camPos.localPosition = crouchPos.localPosition;
@@ -65,9 +67,15 @@ public class PlayerController : MonoBehaviour
                 camPos.localPosition = headPos.localPosition;
 
             if (sprint)
+            {
                 speed = defaultSpeed * 1.5f;
+            }
             else
+            {
                 speed = defaultSpeed;
+                //It4Enemy.hearMult = 1f;
+                StealthController.Request(1f, 0);
+            }
         }
 
         if (horizontalInput != 0 || verticalInput != 0)
@@ -96,7 +104,11 @@ public class PlayerController : MonoBehaviour
                 if (crouch)
                     source.clip = crouchSound;
                 else if (sprint)
+                {
                     source.clip = sprintSound;
+                    //It4Enemy.hearMult = 1.5f; // Set multiplier here b/c it should only increase when player is sprinting
+                    StealthController.Request(2f, 0);
+                }
                 else
                     source.clip = walkSound;
 

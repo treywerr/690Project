@@ -36,6 +36,7 @@ public class FlashlightController : MonoBehaviour
             source.clip = runningSound;
             if (!source.isPlaying)
                 source.Play();
+            StealthController.Request(3f, 1);
 
             lite.intensity = intens;
             lite.enabled = true;
@@ -56,6 +57,7 @@ public class FlashlightController : MonoBehaviour
             source.clip = chargeSound;
             if (!source.isPlaying)
                 source.Play();
+            StealthController.Request(3f, 1);
 
             chargeTime -= Time.deltaTime;
 
