@@ -67,6 +67,7 @@ public class LockPickGame : PlayerInteractionEffect
         if(currentIndex > lockLength)
         {
             failSound.Play();
+            StealthController.TimeRequest(1.5f, 1, 1.5f);
             ExitGame(false);
             return;
         }
