@@ -45,6 +45,12 @@ public class StealthController : MonoBehaviour
                 waitTime = duration;
             }
         }
+        else if (priority >= currentRequestPriority)
+        {
+            currentRequestPriority = priority;
+            It4Enemy.hearMult = mult;
+            waitTime = duration;
+        }
     }
 
     /*IEnumerator FulfillRequest(float duration)
