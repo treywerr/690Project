@@ -6,7 +6,6 @@ public class FlashlightController : MonoBehaviour
 {
     public Light lite;
     public float chargeTimeMax = 5;
-    public float litTimeMax = 2;
     private float chargeTime = 0;
     private float litTime = 2;
     private float intens;
@@ -110,59 +109,6 @@ public class FlashlightController : MonoBehaviour
         {
             StealthController.Request(3f, 1);
         }
-        /**
-        if (chargeTime <= 0)
-        {
-            // Flashlight lit //
-
-            // OPERATION SOUND
-            source.clip = runningSound;
-            if (!source.isPlaying)
-                source.Play();
-            StealthController.Request(3f, 1);
-
-            lite.intensity = intens;
-            lite.enabled = true;
-            CastLight();
-            litTime -= Time.deltaTime;
-            if (litTime <= 0)
-            {
-                lite.enabled = false;
-                litTime = litTimeMax;
-                chargeTime = chargeTimeMax;
-            }
-            cooldown = true;
-        }
-        else if (InputWrapper.GetAxis("Flashlight", InputWrapper.InputStates.Gameplay) == 1f && cooldown == false)
-        {
-            // Flashlight charging //
-
-            // WIND UP SOUND
-            source.clip = chargeSound;
-            if (!source.isPlaying)
-                source.Play();
-            StealthController.Request(3f, 1);
-
-            chargeTime -= Time.deltaTime;
-
-            // Flicker
-            lite.intensity = 1;
-            lite.enabled = Flicker(chargeTime);
-        }
-        else
-        {
-            chargeTime = chargeTimeMax;
-            lite.enabled = false;
-
-            if (source.isPlaying && source.clip != windDownSound)
-            {
-                source.clip = windDownSound;
-                source.Play();
-                StartCoroutine(startCooldown());
-            }
-        }
-        **/
-
     }
 
     bool Flicker(float x)
