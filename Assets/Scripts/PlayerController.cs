@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip crouchSound;
     private bool moving = false;
 
+    private float previousSpeed;
+    private Coroutine soundRoutine;
+
     private Vector3 velocity; // Store velocity vector for gravity
 
     // Start is called before the first frame update
@@ -31,6 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         speed = defaultSpeed;
+        previousSpeed = defaultSpeed;
         if (Respawner.getLocalSpawn() == null)
         {
             Respawner.setLocalSpawn(GameObject.Find("SpawnPoint").transform);
@@ -112,14 +116,26 @@ public class PlayerController : MonoBehaviour
                 else
                     source.clip = walkSound;
 
-                if (!source.isPlaying)
-                    source.Play();
+                if (previousSpeed != speed)
+                {
+                    StopAllCoroutines();
+                    soundRoutine = StartCoroutine(PlayWalkNoise());
+                }
+
             }
             else if (moving)
             {
                 source.Stop();
+                StopAllCoroutines();
                 moving = false;
             }
         }
+        previousSpeed = speed;
+    }
+
+    IEnumerator PlayWalkNoise()
+    {
+        yield return new WaitForSeconds(0.5f);
+        source.Play();
     }
 }

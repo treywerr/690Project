@@ -51,6 +51,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5481836643231653980, guid: 1485d3575725c7d4698489099699c996, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 21b255fb14c0bb44aa1d060cf10281fe, type: 3}
     - target: {fileID: 6403637832144210846, guid: 1485d3575725c7d4698489099699c996, type: 3}
       propertyPath: m_Name
       value: FlashlightPickup Variant
@@ -59,6 +63,30 @@ PrefabInstance:
       propertyPath: loreIndex
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8752644211972235626, guid: 1485d3575725c7d4698489099699c996, type: 3}
+      propertyPath: m_Size.x
+      value: 1.9933333
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752644211972235626, guid: 1485d3575725c7d4698489099699c996, type: 3}
+      propertyPath: m_Size.y
+      value: 1.8733333
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752644211972235626, guid: 1485d3575725c7d4698489099699c996, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8758690844910928894, guid: 1485d3575725c7d4698489099699c996, type: 3}
+      propertyPath: m_Size.x
+      value: 1.9933333
+      objectReference: {fileID: 0}
+    - target: {fileID: 8758690844910928894, guid: 1485d3575725c7d4698489099699c996, type: 3}
+      propertyPath: m_Size.y
+      value: 1.8733333
+      objectReference: {fileID: 0}
+    - target: {fileID: 8758690844910928894, guid: 1485d3575725c7d4698489099699c996, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 21b255fb14c0bb44aa1d060cf10281fe, type: 3}
     m_RemovedComponents:
     - {fileID: 6786617382528653870, guid: 1485d3575725c7d4698489099699c996, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1485d3575725c7d4698489099699c996, type: 3}
