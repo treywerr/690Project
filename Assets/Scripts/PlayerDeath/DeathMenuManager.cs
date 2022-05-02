@@ -19,12 +19,15 @@ public class DeathMenuManager : MonoBehaviour
         gameOverMenu.SetActive(true);
         InputWrapper.ChangeState(InputWrapper.InputStates.Menus);
         Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
+
+        FindObjectOfType<SoundManager>().whenDead();
     }
 
     public void RestartLevel(){
-
-        Debug.Log("I got clicked!");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        FindObjectOfType<SoundManager>().whenAlive();
+        
     }
 
     public void GoToMainMenu(){
