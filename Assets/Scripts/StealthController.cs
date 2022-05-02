@@ -30,7 +30,7 @@ public class StealthController : MonoBehaviour
         {
             It4Enemy.hearMult = mult;
             currentRequestPriority = priority;
-            Debug.Log("Request " + It4Enemy.hearMult + " priority " + priority);
+            //Debug.Log("Request " + It4Enemy.hearMult + " priority " + priority);
         }
     }
 
