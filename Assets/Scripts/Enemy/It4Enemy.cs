@@ -132,6 +132,7 @@ public class It4Enemy : MonoBehaviour {
             {
                 playerCaught = true;
                 AudioSource.PlayClipAtPoint(caughtStinger, PlayerMove.transform.position);
+                PlayerMove.GetComponent<PlayerTakeDamage>().takeDamage(100);
             }
 
             /* Enemy Behavior */
