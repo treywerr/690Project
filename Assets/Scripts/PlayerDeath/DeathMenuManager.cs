@@ -27,6 +27,7 @@ public class DeathMenuManager : MonoBehaviour
     public void RestartLevel(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         FindObjectOfType<SoundManager>().whenAlive();
+        InputWrapper.ChangeState(InputWrapper.InputStates.Gameplay);
         
     }
 
