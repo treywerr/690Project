@@ -5705,10 +5705,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7879008243613243303, guid: 44ffb8eaf6b91f247a9939c7cae804ca, type: 3}
-      propertyPath: bushTutorial
-      value: 
-      objectReference: {fileID: 1931105847}
     - target: {fileID: 8253853313360044488, guid: 44ffb8eaf6b91f247a9939c7cae804ca, type: 3}
       propertyPath: m_Name
       value: Player
@@ -12414,11 +12410,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec7a1077bec42d049ab9e328d9928d91, type: 3}
---- !u!1 &1931105847 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4850206176033464060, guid: 44ffb8eaf6b91f247a9939c7cae804ca, type: 3}
-  m_PrefabInstance: {fileID: 981740109}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1935851302
 PrefabInstance:
   m_ObjectHideFlags: 0
