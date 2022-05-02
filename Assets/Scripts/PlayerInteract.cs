@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] GameObject interactPrompt;
+    [SerializeField] GameObject bushTutorial;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +22,12 @@ public class PlayerInteract : MonoBehaviour
     {
         if(InputWrapper.currentState == InputWrapper.InputStates.Gameplay)
         {
-            CastRay();
+            CastInteractRay();
+            TutorialBushRay();
         }
     }
 
-    void CastRay()
+    void CastInteractRay()
     {
         interactPrompt.SetActive(false);
         Vector3 direction = transform.rotation * Vector3.forward;
@@ -43,6 +45,21 @@ public class PlayerInteract : MonoBehaviour
                 interactPrompt.SetActive(true);
             }
         }
-        Debug.DrawRay(transform.position, direction * 5f);
+        //Debug.DrawRay(transform.position, direction * 5f);
+    }
+
+    void TutorialBushRay()
+    {
+        bushTutorial.SetActive(false);
+        Vector3 direction = transform.rotation * Vector3.forward;
+        RaycastHit hitInfo;
+        bool hit = Physics.Raycast(transform.position, direction, out hitInfo, 5f);
+        if(hit)
+        {
+            if(hitInfo.collider.gameObject.CompareTag("TutorialBush"))
+            {
+                bushTutorial.SetActive(true);
+            }
+        }
     }
 }

@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactPrompt: {fileID: 2501490018098193666}
+  bushTutorial: {fileID: 4850206176033464060}
 --- !u!1 &1967140796004240667
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +508,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lite: {fileID: 53563918}
   chargeTimeMax: 5
-  litTimeMax: 2
   numRays: 7
   source: {fileID: 1190589318}
   chargeSound: {fileID: 8300000, guid: c9ba7642ea86c7645ab9d911585340e7, type: 3}
@@ -1086,6 +1086,11 @@ GameObject:
 --- !u!1 &2501490018098193666 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7474633239603738889, guid: 6ea6fa38f6053724698f4cf341042dd1, type: 3}
+  m_PrefabInstance: {fileID: 4975396490232323083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4850206176033464060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 451288425428189943, guid: 6ea6fa38f6053724698f4cf341042dd1, type: 3}
   m_PrefabInstance: {fileID: 4975396490232323083}
   m_PrefabAsset: {fileID: 0}
 --- !u!82 &1231122545723174107

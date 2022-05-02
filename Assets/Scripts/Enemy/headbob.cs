@@ -9,8 +9,8 @@ public class headbob : MonoBehaviour
     [SerializeField] private bool enable = true;
     [SerializeField, Range(0, 0.1f)] private float amplitude = 0.001f; 
     [SerializeField, Range(0, 30)] private float frequency = 10.0f;
-    [SerializeField] private Transform camera = null; 
-    [SerializeField] private Transform cameraHolder = null;
+    [SerializeField] private Transform camera; 
+    [SerializeField] private Transform cameraHolder;
     private float toggleSpeed = 3.0f; 
     private Vector3 startPos; 
     private CharacterController controller;
