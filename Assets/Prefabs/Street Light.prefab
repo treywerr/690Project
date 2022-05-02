@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3707224433349145500}
   - component: {fileID: 3768477942086652272}
   - component: {fileID: 4168359147888304062}
-  - component: {fileID: 27673323989298644}
+  - component: {fileID: 6820737094156230701}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -153,7 +153,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 245edf2aa72851b418b3f55a9debce4c, type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 0
   m_BackSortingLayerID: 0
@@ -163,7 +163,7 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
---- !u!114 &27673323989298644
+--- !u!114 &6820737094156230701
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

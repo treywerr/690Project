@@ -57,8 +57,7 @@ public class StreetlightController : MonoBehaviour
         foreach(GameObject enemy in enemies)
         {
             // Play enemy death animation/sound
-            // delay destroy by appropriate amount for animation/sound to play
-            Destroy(enemy);
+            enemy.GetComponent<EnemyDeath>().KillEnemy();
         }
     }
 

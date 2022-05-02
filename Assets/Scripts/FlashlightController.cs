@@ -129,8 +129,7 @@ public class FlashlightController : MonoBehaviour
                 if (hit.transform.tag == "Enemy")
                 {
                     // Play enemy death animation/sound
-                    // delay destroy by appropriate amount for animation/sound to play
-                    Destroy(hit.transform.gameObject);
+                    hit.transform.gameObject.GetComponent<EnemyDeath>().KillEnemy();
                 }
             }
         }
