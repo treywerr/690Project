@@ -389,6 +389,7 @@ GameObject:
   - component: {fileID: 837911345456827796}
   - component: {fileID: 300487483}
   - component: {fileID: 2225817268158717647}
+  - component: {fileID: 8828492768586214329}
   m_Layer: 0
   m_Name: MonsterPrefab
   m_TagString: Enemy
@@ -584,3 +585,20 @@ CapsuleCollider:
   m_Height: 4.5
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &8828492768586214329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837911345456827792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf4c1b1e6f9e8a40976fb43e299b267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  face: {fileID: 182398741}
+  body: {fileID: 649027514}
+  duration: 2
+  source: {fileID: 300487483}
+  deathSound: {fileID: 8300000, guid: 1ab9f1d7331b2a846a2d83c8052cb3ce, type: 3}
