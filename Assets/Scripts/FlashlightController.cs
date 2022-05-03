@@ -37,7 +37,6 @@ public class FlashlightController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(currentState.ToString());
         if(currentState == LightState.Ready)
         {
             if(InputWrapper.GetAxis("Flashlight", InputWrapper.InputStates.Gameplay) == 1f)

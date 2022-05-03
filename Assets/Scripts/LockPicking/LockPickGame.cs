@@ -78,9 +78,11 @@ public class LockPickGame : PlayerInteractionEffect
         //RandomizeGame();
         //move to different spot later?
         InputWrapper.ChangeState(InputWrapper.InputStates.Menus);
+        Vector2 shacklePos = shackle.anchoredPosition;
+        shacklePos.y = -167f;
+        shackle.anchoredPosition = shacklePos;
 
-
-        correctIndex = Random.Range(2, lockLength);
+        correctIndex = Random.Range(3, lockLength);
         playingGame = true;
         timeSinceStart = 0f;
         currentIndex = 0;
