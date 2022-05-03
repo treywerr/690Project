@@ -122,7 +122,7 @@ public class LockPickGame : PlayerInteractionEffect
     IEnumerator WigglePick()
     {
         float pos = rakingPick.rotation.eulerAngles.z;
-        float speed = 0.2f;
+        float speed = 0.5f;
         while(true)
         {
             while(pos <= 50f)
@@ -144,7 +144,7 @@ public class LockPickGame : PlayerInteractionEffect
     {
         Vector3 pos = shackle.anchoredPosition;
         float speed = 1f;
-        while(pos.y <= -60f)
+        while(pos.y <= -80f)
         {
             pos += speed * Vector3.up;
             shackle.anchoredPosition = pos;

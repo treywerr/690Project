@@ -92,6 +92,9 @@ public class LoreDialogue : MonoBehaviour
             Item_Name.text = data.extraVars["Title"].ToString();
             Item_Sprite.gameObject.SetActive(true);
             Item_Sprite.sprite = data.sprite ? data.sprite : defaultImage;
+            float scaleFactor = 300 / data.sprite.bounds.size.y;
+            Item_Sprite.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, data.sprite.bounds.size.y * scaleFactor);
+            Item_Sprite.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 300);
             Background.gameObject.SetActive(true);
         }
         else //For Player. It will activate the required Buttons and set their text
