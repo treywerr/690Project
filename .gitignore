@@ -61,3 +61,7 @@ crashlytics-build.properties
 UserSettings/EditorUserSettings.asset
 
 Assets/Conifers \[BOTD\].meta
+
+# Sound file thing
+*.pkf
+*.pkf.meta
