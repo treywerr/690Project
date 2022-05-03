@@ -33,5 +33,7 @@ public class DeathMenuManager : MonoBehaviour
 
     public void GoToMainMenu(){
         SceneManager.LoadScene("MainMenu");
+        FindObjectOfType<SoundManager>().whenAlive();
+        InputWrapper.ChangeState(InputWrapper.InputStates.Gameplay);
     }
 }
