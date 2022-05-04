@@ -11,7 +11,7 @@ public class EnemyDeath : MonoBehaviour
     [SerializeField] private float duration = 2f; // Set this to be length of death sound or death animation, whichever is longer
 
     public AudioSource source;
-    public AudioClip deathSound;
+    public AudioClip[] deathSounds;
 
     public void KillEnemy()
     {
@@ -25,7 +25,7 @@ public class EnemyDeath : MonoBehaviour
         Destroy(GetComponent<NavMeshAgent>());
 
         // Play death sound
-        source.clip = deathSound;
+        source.clip = deathSounds[Random.Range(0, deathSounds.Length)];
         source.Play();
 
         // Play death animation

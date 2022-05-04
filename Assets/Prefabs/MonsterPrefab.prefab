@@ -452,6 +452,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e0b26e5f69eefdd459c95bd98c3b051e, type: 3}
   - {fileID: 8300000, guid: 50c486cc3c8e5d34d8d6b140941e15c8, type: 3}
   - {fileID: 8300000, guid: a7c2781e97831a846b6c822f704e02fd, type: 3}
+  - {fileID: 8300000, guid: d6750f457136cf44b80ed067bacc7b02, type: 3}
   caughtStinger: {fileID: 8300000, guid: 12564c8c427b5114589a616f90993148, type: 3}
 --- !u!195 &837911345456827796
 NavMeshAgent:
@@ -601,4 +602,9 @@ MonoBehaviour:
   body: {fileID: 649027514}
   duration: 2
   source: {fileID: 300487483}
-  deathSound: {fileID: 8300000, guid: 1ab9f1d7331b2a846a2d83c8052cb3ce, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: e68351e93722ac74fb992b6131510245, type: 3}
+  - {fileID: 8300000, guid: a43496965feeca34ea99068a96280ca2, type: 3}
+  - {fileID: 8300000, guid: e9cc83b92ef967b4caba9cc87d1b53a9, type: 3}
+  - {fileID: 8300000, guid: 29878faa81714244398281b76e0ba283, type: 3}
+  - {fileID: 8300000, guid: 794930c2e5488c84bb40e5a91f116cb3, type: 3}
