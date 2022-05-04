@@ -126,6 +126,7 @@ public class It4Enemy : MonoBehaviour {
 
         if(distance <= chaseRadius && distance > distToPlayer){
             nav.SetDestination(PlayerMove.transform.position);
+            GetComponent<NavMeshAgent>().speed = 5.5f;
         }else if(nav.isActiveAndEnabled && distance <= distToPlayer){
             /* Kill Player */
             if (!playerCaught)
@@ -160,8 +161,9 @@ public class It4Enemy : MonoBehaviour {
     }
 
     void Patrol(){
+        GetComponent<NavMeshAgent>().speed = 3.5f;
         nav.SetDestination(moveSpots[randomSpot].position);
-
+        
         if(Vector3.Distance(transform.position, moveSpots[randomSpot].position) < 2.0f){
             if(waitTime <= 0){
                 randomSpot = Random.Range(0, moveSpots.Length);
