@@ -6463,7 +6463,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b52bd1d11d1cdb049a64eceeac5a05c5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 92a37c69d3e0af74cb4e4b3f6789fb79, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -11278,6 +11278,10 @@ PrefabInstance:
     - target: {fileID: 6400976094550740477, guid: d21703b602704d742ae52f4c89226d15, type: 3}
       propertyPath: m_Name
       value: Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164349708385343940, guid: d21703b602704d742ae52f4c89226d15, type: 3}
+      propertyPath: scene
+      value: Maze
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d21703b602704d742ae52f4c89226d15, type: 3}
