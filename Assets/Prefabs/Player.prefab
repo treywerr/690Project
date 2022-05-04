@@ -186,8 +186,8 @@ Skybox:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: d9a1d28428bbd834b9d608ae793774ec, type: 2}
+  m_Enabled: 0
+  m_CustomSkybox: {fileID: 2100000, guid: ebf0417cbc637484fa1347a946f10fd2, type: 2}
 --- !u!114 &7879008243613243303
 MonoBehaviour:
   m_ObjectHideFlags: 0
