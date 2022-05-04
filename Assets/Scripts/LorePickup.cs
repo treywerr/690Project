@@ -8,7 +8,8 @@ public class LorePickup : MonoBehaviour
     {
         Necklace,
         StuffedSnake,
-        FlashLight
+        FlashLight,
+        Glasses
     }
     /// <summary>
     /// Which item is this? If correct item is not seen, add it to Pickups enum and make sure theres a corresponding dialogue node in the LorePickups dialogue.
