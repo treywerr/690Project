@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class DeathMenuManager : MonoBehaviour
 {
     public GameObject gameOverMenu;
+    public GameObject PperImage;
 
     private void OnEnable(){
         PlayerTakeDamage.OnPlayerDeath += EnableGameOverMenu;
@@ -35,5 +36,15 @@ public class DeathMenuManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
         FindObjectOfType<SoundManager>().whenAlive();
         InputWrapper.ChangeState(InputWrapper.InputStates.Gameplay);
+    }
+
+    public void EnablePepper(){
+        PperImage.SetActive(true);
+        gameOverMenu.SetActive(false);
+    }
+
+    public void DisablePepper(){
+        PperImage.SetActive(false);
+        gameOverMenu.SetActive(true);
     }
 }
