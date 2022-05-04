@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         speed = defaultSpeed;
-        previousSpeed = defaultSpeed;
+        previousSpeed = 0;
         if (Respawner.getLocalSpawn() == null)
         {
             Respawner.setLocalSpawn(GameObject.Find("SpawnPoint").transform);
@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
         if (crouch)
         {
             speed = defaultSpeed * 0.5f;
-            //It4Enemy.hearMult = .5f;
             StealthController.Request(.5f, 0);
             // shorten the player
             if (camPos.localPosition != crouchPos.localPosition)
@@ -77,7 +76,6 @@ public class PlayerController : MonoBehaviour
             else
             {
                 speed = defaultSpeed;
-                //It4Enemy.hearMult = 1f;
                 StealthController.Request(1f, 0);
             }
         }
@@ -110,7 +108,7 @@ public class PlayerController : MonoBehaviour
                 else if (sprint)
                 {
                     source.clip = sprintSound;
-                    //It4Enemy.hearMult = 1.5f; // Set multiplier here b/c it should only increase when player is sprinting
+                    // Set multiplier here b/c it should only increase when player is sprinting
                     StealthController.Request(2f, 0);
                 }
                 else
@@ -130,7 +128,11 @@ public class PlayerController : MonoBehaviour
                 moving = false;
             }
         }
-        previousSpeed = speed;
+
+        if (velocity.x != 0 || velocity.z != 0)
+            previousSpeed = speed;
+        else
+            previousSpeed = 0;
     }
 
     IEnumerator PlayWalkNoise()

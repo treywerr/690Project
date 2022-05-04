@@ -527,7 +527,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -718,7 +718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enable: 1
-  amplitude: 0.075
+  amplitude: 0.0379
   frequency: 10
   camera: {fileID: 963194228}
   cameraHolder: {fileID: 3407015575310763923}
